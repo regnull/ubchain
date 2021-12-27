@@ -69,7 +69,7 @@ func createNewAccount(ks *keystore.KeyStore) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("New account address:", newAcc.Address.Hex())
+	fmt.Println("New account address: ", newAcc.Address.Hex())
 }
 
 func getGasPrice(client *ethclient.Client) {
