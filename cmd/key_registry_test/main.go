@@ -58,5 +58,5 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("item: %v\n", result)
+	fmt.Printf("item: %+v\n", result)
 }
