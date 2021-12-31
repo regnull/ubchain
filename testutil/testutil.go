@@ -28,7 +28,9 @@ func NewSimulatedBlockchain() (*SimulatedBlockchain, error) {
 	// Create a simulated blockchain.
 	alloc := make(core.GenesisAlloc)
 	// Balance should be high enough to cover the transaction costs.
-	alloc[auth.From] = core.GenesisAccount{Balance: big.NewInt(1000000000000000)}
+	initialBalance := big.NewInt(1000000000000000000)                     // 1 Ether.
+	initialBalance = initialBalance.Mul(initialBalance, big.NewInt(1000)) // 1000 Ether.
+	alloc[auth.From] = core.GenesisAccount{Balance: initialBalance}
 	blockchain := backends.NewSimulatedBackend(alloc, 10000000)
 
 	// Deploy contract.
