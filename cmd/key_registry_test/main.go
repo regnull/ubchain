@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"log"
@@ -58,5 +59,46 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	if !result.Initialized {
+		log.Fatal("key must be initialized")
+	}
 	fmt.Printf("item: %+v\n", result)
+
+	keyExists, err := instance.Exists(nil, myPrivateKey.PublicKey().SerializeCompressed())
+	if err != nil {
+		log.Fatal(err)
+	}
+	if !keyExists {
+		log.Fatal("key must exist")
+	}
+
+	someOtherKey, err := easyecc.NewRandomPrivateKey()
+	if err != nil {
+		log.Fatal(err)
+	}
+	keyExists, err = instance.Exists(nil, someOtherKey.PublicKey().SerializeCompressed())
+	if err != nil {
+		log.Fatal(err)
+	}
+	if keyExists {
+		log.Fatal("key must not exist")
+	}
+
+	keyOwner, err := instance.KeyOwner(nil, myPrivateKey.PublicKey().SerializeCompressed())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if !bytes.Equal(keyOwner, myPrivateKey.PublicKey().SerializeCompressed()) {
+		log.Fatal("invalid key owner")
+	}
+
+	keyOwner, err = instance.KeyOwner(nil, someOtherKey.PublicKey().SerializeCompressed())
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if len(keyOwner) != 0 {
+		log.Fatal("invalid key owner")
+	}
 }
