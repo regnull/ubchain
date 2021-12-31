@@ -30,8 +30,8 @@ var (
 
 // KeyRegistryMetaData contains all meta data concerning the KeyRegistry contract.
 var KeyRegistryMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"KeyDisabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"KeyParentRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"KeyRegistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"disable\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"disabled\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"exists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"keyOwner\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"parent\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"register\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"parentKey\",\"type\":\"bytes\"}],\"name\":\"registerParent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"registry\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"initialized\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"disabled\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"parent\",\"type\":\"bytes\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
-	Bin: "0x608060405234801561001057600080fd5b50610c36806100206000396000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c80638fc925aa1161005b5780638fc925aa14610101578063a15d581c14610114578063b10d937b14610136578063e44ccc651461014957600080fd5b80630f04a82e1461008d578063467d64c9146100b657806379fc09a2146100c957806382fbdc9c146100ec575b600080fd5b6100a061009b36600461089a565b61015c565b6040516100ad9190610929565b60405180910390f35b6100a06100c436600461089a565b610213565b6100dc6100d736600461089a565b61037b565b60405190151581526020016100ad565b6100ff6100fa36600461089a565b6103a9565b005b6100ff61010f36600461089a565b610455565b610127610122366004610959565b6105ae565b6040516100ad93929190610a0a565b6100ff610144366004610a36565b61066b565b6100dc61015736600461089a565b610784565b606060008383604051610170929190610aa2565b9081526020016040518091039020600101805461018c90610ab2565b80601f01602080910402602001604051908101604052809291908181526020018280546101b890610ab2565b80156102055780601f106101da57610100808354040283529160200191610205565b820191906000526020600020905b8154815290600101906020018083116101e857829003601f168201915b505050505090505b92915050565b606060008383604051610227929190610aa2565b9081526040519081900360200190205460ff16610253575060408051602081019091526000815261020d565b6000808484604051610266929190610aa2565b9081526020016040518091039020600101805461028290610ab2565b9050111561033d576000838360405161029c929190610aa2565b908152602001604051809103902060010180546102b890610ab2565b80601f01602080910402602001604051908101604052809291908181526020018280546102e490610ab2565b80156103315780601f1061030657610100808354040283529160200191610331565b820191906000526020600020905b81548152906001019060200180831161031457829003601f168201915b5050505050905061020d565b82828080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250929695505050505050565b600080838360405161038e929190610aa2565b9081526040519081900360200190205460ff16905092915050565b602181146103b657600080fd5b600082826040516103c8929190610aa2565b9081526040519081900360200190205460ff16156103e557600080fd5b6001600083836040516103f9929190610aa2565b908152604051908190036020018120805492151560ff19909316929092179091557f2123184afbd7510b176b666deb82298c81b9a8b363e3a88f8cf4b726e4c81ae4906104499084908490610b16565b60405180910390a15050565b6021811461046257600080fd5b60008282604051610474929190610aa2565b9081526040519081900360200190205460ff1661049057600080fd5b600082826040516104a2929190610aa2565b908152602001604051809103902060010180546104be90610ab2565b151590506104f857600082826040516104d8929190610aa2565b60405190819003902060601c90503381146104f257600080fd5b50610545565b600080838360405161050b929190610aa2565b90815260200160405180910390206001016040516105299190610b32565b60405190819003902060601c905033811461054357600080fd5b505b600160008383604051610559929190610aa2565b90815260405190819003602001812080549215156101000261ff0019909316929092179091557f1eefa765080cc5f57ade4997fa66a727ed30bdef80fe40a6dd5fe0dce8f8abbd906104499084908490610b16565b80516020818301810180516000825292820191909301209152805460018201805460ff80841694610100909404169291906105e890610ab2565b80601f016020809104026020016040519081016040528092919081815260200182805461061490610ab2565b80156106615780601f1061063657610100808354040283529160200191610661565b820191906000526020600020905b81548152906001019060200180831161064457829003601f168201915b5050505050905083565b6021831461067857600080fd5b6021811461068557600080fd5b60008484604051610697929190610aa2565b9081526040519081900360200190205460ff166106b357600080fd5b600082826040516106c5929190610aa2565b9081526040519081900360200190205460ff166106e157600080fd5b600084846040516106f3929190610aa2565b60405190819003902060601c905033811461070d57600080fd5b828260008787604051610721929190610aa2565b9081526020016040518091039020600101919061073f9291906107b8565b507f3f629b715f22cf1453603aec7468ddc75788aab619ed052ccba9606638b8bb6d858585856040516107759493929190610bce565b60405180910390a15050505050565b6000808383604051610797929190610aa2565b9081526040519081900360200190205460ff61010090910416905092915050565b8280546107c490610ab2565b90600052602060002090601f0160209004810192826107e6576000855561082c565b82601f106107ff5782800160ff1982351617855561082c565b8280016001018555821561082c579182015b8281111561082c578235825591602001919060010190610811565b5061083892915061083c565b5090565b5b80821115610838576000815560010161083d565b60008083601f84011261086357600080fd5b50813567ffffffffffffffff81111561087b57600080fd5b60208301915083602082850101111561089357600080fd5b9250929050565b600080602083850312156108ad57600080fd5b823567ffffffffffffffff8111156108c457600080fd5b6108d085828601610851565b90969095509350505050565b6000815180845260005b81811015610902576020818501810151868301820152016108e6565b81811115610914576000602083870101525b50601f01601f19169290920160200192915050565b60208152600061093c60208301846108dc565b9392505050565b634e487b7160e01b600052604160045260246000fd5b60006020828403121561096b57600080fd5b813567ffffffffffffffff8082111561098357600080fd5b818401915084601f83011261099757600080fd5b8135818111156109a9576109a9610943565b604051601f8201601f19908116603f011681019083821181831017156109d1576109d1610943565b816040528281528760208487010111156109ea57600080fd5b826020860160208301376000928101602001929092525095945050505050565b83151581528215156020820152606060408201526000610a2d60608301846108dc565b95945050505050565b60008060008060408587031215610a4c57600080fd5b843567ffffffffffffffff80821115610a6457600080fd5b610a7088838901610851565b90965094506020870135915080821115610a8957600080fd5b50610a9687828801610851565b95989497509550505050565b8183823760009101908152919050565b600181811c90821680610ac657607f821691505b60208210811415610ae757634e487b7160e01b600052602260045260246000fd5b50919050565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b602081526000610b2a602083018486610aed565b949350505050565b600080835481600182811c915080831680610b4e57607f831692505b6020808410821415610b6e57634e487b7160e01b86526022600452602486fd5b818015610b825760018114610b9357610bc0565b60ff19861689528489019650610bc0565b60008a81526020902060005b86811015610bb85781548b820152908501908301610b9f565b505084890196505b509498975050505050505050565b604081526000610be2604083018688610aed565b8281036020840152610bf5818587610aed565b97965050505050505056fea264697066735822122072f50e38f82eb89926f329c2d045ed8e89532e1f4e9217e34cf40ab227ccc7ef64736f6c634300080b0033",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"name\":\"KeyDisabled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"KeyOwnerChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"KeyRegistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"changeOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"disable\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"disabled\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"register\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"registered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+	Bin: "0x608060405234801561001057600080fd5b506105c2806100206000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c80635aca952e1461006757806382fbdc9c1461008f5780638a6ec070146100a45780638fc925aa146100b7578063bd27b241146100ca578063e44ccc65146100f5575b600080fd5b61007a610075366004610466565b610108565b60405190151581526020015b60405180910390f35b6100a261009d366004610466565b61014f565b005b6100a26100b23660046104a8565b610227565b6100a26100c5366004610466565b6102ff565b6100dd6100d8366004610466565b6103b5565b6040516001600160a01b039091168152602001610086565b61007a610103366004610466565b6103ef565b6000806001600160a01b03166000848460405161012692919061050b565b908152604051908190036020019020546001600160a01b03610100909104161415905092915050565b6021811461015c57600080fd5b60006001600160a01b03166000838360405161017992919061050b565b908152604051908190036020019020546001600160a01b0361010090910416146101a257600080fd5b33600083836040516101b592919061050b565b90815260405190819003602001812080546001600160a01b039390931661010002610100600160a81b0319909316929092179091557ff77c9b4a9cc46843db8f22d9e84de14b5900316e5706ca63f7fb447ba07c3dc69061021b90849084903390610544565b60405180910390a15050565b6021821461023457600080fd5b336001600160a01b03166000848460405161025092919061050b565b908152604051908190036020019020546001600160a01b03610100909104161461027957600080fd5b806000848460405161028c92919061050b565b90815260405190819003602001812080546001600160a01b039390931661010002610100600160a81b0319909316929092179091557f4676a911d74639b4a1cbae32a65b0c9ee0ed453681b4246f164bb4381079b03c906102f290859085908590610544565b60405180910390a1505050565b6021811461030c57600080fd5b336001600160a01b03166000838360405161032892919061050b565b908152604051908190036020019020546001600160a01b03610100909104161461035157600080fd5b60016000838360405161036592919061050b565b908152604051908190036020018120805492151560ff19909316929092179091557f1eefa765080cc5f57ade4997fa66a727ed30bdef80fe40a6dd5fe0dce8f8abbd9061021b9084908490610570565b60008083836040516103c892919061050b565b908152604051908190036020019020546001600160a01b0361010090910416905092915050565b600080838360405161040292919061050b565b9081526040519081900360200190205460ff16905092915050565b60008083601f84011261042f57600080fd5b50813567ffffffffffffffff81111561044757600080fd5b60208301915083602082850101111561045f57600080fd5b9250929050565b6000806020838503121561047957600080fd5b823567ffffffffffffffff81111561049057600080fd5b61049c8582860161041d565b90969095509350505050565b6000806000604084860312156104bd57600080fd5b833567ffffffffffffffff8111156104d457600080fd5b6104e08682870161041d565b90945092505060208401356001600160a01b038116811461050057600080fd5b809150509250925092565b8183823760009101908152919050565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b60408152600061055860408301858761051b565b905060018060a01b0383166020830152949350505050565b60208152600061058460208301848661051b565b94935050505056fea2646970667358221220d9dffa577a41dfcf94907a12aaebcfc4617815a504e4b0bd5aa23bdb801952b764736f6c634300080b0033",
 }
 
 // KeyRegistryABI is the input ABI used to generate the binding from.
@@ -232,12 +232,43 @@ func (_KeyRegistry *KeyRegistryCallerSession) Disabled(publicKey []byte) (bool, 
 	return _KeyRegistry.Contract.Disabled(&_KeyRegistry.CallOpts, publicKey)
 }
 
-// Exists is a free data retrieval call binding the contract method 0x79fc09a2.
+// Owner is a free data retrieval call binding the contract method 0xbd27b241.
 //
-// Solidity: function exists(bytes publicKey) view returns(bool)
-func (_KeyRegistry *KeyRegistryCaller) Exists(opts *bind.CallOpts, publicKey []byte) (bool, error) {
+// Solidity: function owner(bytes publicKey) view returns(address)
+func (_KeyRegistry *KeyRegistryCaller) Owner(opts *bind.CallOpts, publicKey []byte) (common.Address, error) {
 	var out []interface{}
-	err := _KeyRegistry.contract.Call(opts, &out, "exists", publicKey)
+	err := _KeyRegistry.contract.Call(opts, &out, "owner", publicKey)
+
+	if err != nil {
+		return *new(common.Address), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(common.Address)).(*common.Address)
+
+	return out0, err
+
+}
+
+// Owner is a free data retrieval call binding the contract method 0xbd27b241.
+//
+// Solidity: function owner(bytes publicKey) view returns(address)
+func (_KeyRegistry *KeyRegistrySession) Owner(publicKey []byte) (common.Address, error) {
+	return _KeyRegistry.Contract.Owner(&_KeyRegistry.CallOpts, publicKey)
+}
+
+// Owner is a free data retrieval call binding the contract method 0xbd27b241.
+//
+// Solidity: function owner(bytes publicKey) view returns(address)
+func (_KeyRegistry *KeyRegistryCallerSession) Owner(publicKey []byte) (common.Address, error) {
+	return _KeyRegistry.Contract.Owner(&_KeyRegistry.CallOpts, publicKey)
+}
+
+// Registered is a free data retrieval call binding the contract method 0x5aca952e.
+//
+// Solidity: function registered(bytes publicKey) view returns(bool)
+func (_KeyRegistry *KeyRegistryCaller) Registered(opts *bind.CallOpts, publicKey []byte) (bool, error) {
+	var out []interface{}
+	err := _KeyRegistry.contract.Call(opts, &out, "registered", publicKey)
 
 	if err != nil {
 		return *new(bool), err
@@ -249,130 +280,39 @@ func (_KeyRegistry *KeyRegistryCaller) Exists(opts *bind.CallOpts, publicKey []b
 
 }
 
-// Exists is a free data retrieval call binding the contract method 0x79fc09a2.
+// Registered is a free data retrieval call binding the contract method 0x5aca952e.
 //
-// Solidity: function exists(bytes publicKey) view returns(bool)
-func (_KeyRegistry *KeyRegistrySession) Exists(publicKey []byte) (bool, error) {
-	return _KeyRegistry.Contract.Exists(&_KeyRegistry.CallOpts, publicKey)
+// Solidity: function registered(bytes publicKey) view returns(bool)
+func (_KeyRegistry *KeyRegistrySession) Registered(publicKey []byte) (bool, error) {
+	return _KeyRegistry.Contract.Registered(&_KeyRegistry.CallOpts, publicKey)
 }
 
-// Exists is a free data retrieval call binding the contract method 0x79fc09a2.
+// Registered is a free data retrieval call binding the contract method 0x5aca952e.
 //
-// Solidity: function exists(bytes publicKey) view returns(bool)
-func (_KeyRegistry *KeyRegistryCallerSession) Exists(publicKey []byte) (bool, error) {
-	return _KeyRegistry.Contract.Exists(&_KeyRegistry.CallOpts, publicKey)
+// Solidity: function registered(bytes publicKey) view returns(bool)
+func (_KeyRegistry *KeyRegistryCallerSession) Registered(publicKey []byte) (bool, error) {
+	return _KeyRegistry.Contract.Registered(&_KeyRegistry.CallOpts, publicKey)
 }
 
-// KeyOwner is a free data retrieval call binding the contract method 0x467d64c9.
+// ChangeOwner is a paid mutator transaction binding the contract method 0x8a6ec070.
 //
-// Solidity: function keyOwner(bytes publicKey) view returns(bytes)
-func (_KeyRegistry *KeyRegistryCaller) KeyOwner(opts *bind.CallOpts, publicKey []byte) ([]byte, error) {
-	var out []interface{}
-	err := _KeyRegistry.contract.Call(opts, &out, "keyOwner", publicKey)
-
-	if err != nil {
-		return *new([]byte), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([]byte)).(*[]byte)
-
-	return out0, err
-
+// Solidity: function changeOwner(bytes publicKey, address newOwner) returns()
+func (_KeyRegistry *KeyRegistryTransactor) ChangeOwner(opts *bind.TransactOpts, publicKey []byte, newOwner common.Address) (*types.Transaction, error) {
+	return _KeyRegistry.contract.Transact(opts, "changeOwner", publicKey, newOwner)
 }
 
-// KeyOwner is a free data retrieval call binding the contract method 0x467d64c9.
+// ChangeOwner is a paid mutator transaction binding the contract method 0x8a6ec070.
 //
-// Solidity: function keyOwner(bytes publicKey) view returns(bytes)
-func (_KeyRegistry *KeyRegistrySession) KeyOwner(publicKey []byte) ([]byte, error) {
-	return _KeyRegistry.Contract.KeyOwner(&_KeyRegistry.CallOpts, publicKey)
+// Solidity: function changeOwner(bytes publicKey, address newOwner) returns()
+func (_KeyRegistry *KeyRegistrySession) ChangeOwner(publicKey []byte, newOwner common.Address) (*types.Transaction, error) {
+	return _KeyRegistry.Contract.ChangeOwner(&_KeyRegistry.TransactOpts, publicKey, newOwner)
 }
 
-// KeyOwner is a free data retrieval call binding the contract method 0x467d64c9.
+// ChangeOwner is a paid mutator transaction binding the contract method 0x8a6ec070.
 //
-// Solidity: function keyOwner(bytes publicKey) view returns(bytes)
-func (_KeyRegistry *KeyRegistryCallerSession) KeyOwner(publicKey []byte) ([]byte, error) {
-	return _KeyRegistry.Contract.KeyOwner(&_KeyRegistry.CallOpts, publicKey)
-}
-
-// Parent is a free data retrieval call binding the contract method 0x0f04a82e.
-//
-// Solidity: function parent(bytes publicKey) view returns(bytes)
-func (_KeyRegistry *KeyRegistryCaller) Parent(opts *bind.CallOpts, publicKey []byte) ([]byte, error) {
-	var out []interface{}
-	err := _KeyRegistry.contract.Call(opts, &out, "parent", publicKey)
-
-	if err != nil {
-		return *new([]byte), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([]byte)).(*[]byte)
-
-	return out0, err
-
-}
-
-// Parent is a free data retrieval call binding the contract method 0x0f04a82e.
-//
-// Solidity: function parent(bytes publicKey) view returns(bytes)
-func (_KeyRegistry *KeyRegistrySession) Parent(publicKey []byte) ([]byte, error) {
-	return _KeyRegistry.Contract.Parent(&_KeyRegistry.CallOpts, publicKey)
-}
-
-// Parent is a free data retrieval call binding the contract method 0x0f04a82e.
-//
-// Solidity: function parent(bytes publicKey) view returns(bytes)
-func (_KeyRegistry *KeyRegistryCallerSession) Parent(publicKey []byte) ([]byte, error) {
-	return _KeyRegistry.Contract.Parent(&_KeyRegistry.CallOpts, publicKey)
-}
-
-// Registry is a free data retrieval call binding the contract method 0xa15d581c.
-//
-// Solidity: function registry(bytes ) view returns(bool initialized, bool disabled, bytes parent)
-func (_KeyRegistry *KeyRegistryCaller) Registry(opts *bind.CallOpts, arg0 []byte) (struct {
-	Initialized bool
-	Disabled    bool
-	Parent      []byte
-}, error) {
-	var out []interface{}
-	err := _KeyRegistry.contract.Call(opts, &out, "registry", arg0)
-
-	outstruct := new(struct {
-		Initialized bool
-		Disabled    bool
-		Parent      []byte
-	})
-	if err != nil {
-		return *outstruct, err
-	}
-
-	outstruct.Initialized = *abi.ConvertType(out[0], new(bool)).(*bool)
-	outstruct.Disabled = *abi.ConvertType(out[1], new(bool)).(*bool)
-	outstruct.Parent = *abi.ConvertType(out[2], new([]byte)).(*[]byte)
-
-	return *outstruct, err
-
-}
-
-// Registry is a free data retrieval call binding the contract method 0xa15d581c.
-//
-// Solidity: function registry(bytes ) view returns(bool initialized, bool disabled, bytes parent)
-func (_KeyRegistry *KeyRegistrySession) Registry(arg0 []byte) (struct {
-	Initialized bool
-	Disabled    bool
-	Parent      []byte
-}, error) {
-	return _KeyRegistry.Contract.Registry(&_KeyRegistry.CallOpts, arg0)
-}
-
-// Registry is a free data retrieval call binding the contract method 0xa15d581c.
-//
-// Solidity: function registry(bytes ) view returns(bool initialized, bool disabled, bytes parent)
-func (_KeyRegistry *KeyRegistryCallerSession) Registry(arg0 []byte) (struct {
-	Initialized bool
-	Disabled    bool
-	Parent      []byte
-}, error) {
-	return _KeyRegistry.Contract.Registry(&_KeyRegistry.CallOpts, arg0)
+// Solidity: function changeOwner(bytes publicKey, address newOwner) returns()
+func (_KeyRegistry *KeyRegistryTransactorSession) ChangeOwner(publicKey []byte, newOwner common.Address) (*types.Transaction, error) {
+	return _KeyRegistry.Contract.ChangeOwner(&_KeyRegistry.TransactOpts, publicKey, newOwner)
 }
 
 // Disable is a paid mutator transaction binding the contract method 0x8fc925aa.
@@ -415,27 +355,6 @@ func (_KeyRegistry *KeyRegistrySession) Register(publicKey []byte) (*types.Trans
 // Solidity: function register(bytes publicKey) returns()
 func (_KeyRegistry *KeyRegistryTransactorSession) Register(publicKey []byte) (*types.Transaction, error) {
 	return _KeyRegistry.Contract.Register(&_KeyRegistry.TransactOpts, publicKey)
-}
-
-// RegisterParent is a paid mutator transaction binding the contract method 0xb10d937b.
-//
-// Solidity: function registerParent(bytes publicKey, bytes parentKey) returns()
-func (_KeyRegistry *KeyRegistryTransactor) RegisterParent(opts *bind.TransactOpts, publicKey []byte, parentKey []byte) (*types.Transaction, error) {
-	return _KeyRegistry.contract.Transact(opts, "registerParent", publicKey, parentKey)
-}
-
-// RegisterParent is a paid mutator transaction binding the contract method 0xb10d937b.
-//
-// Solidity: function registerParent(bytes publicKey, bytes parentKey) returns()
-func (_KeyRegistry *KeyRegistrySession) RegisterParent(publicKey []byte, parentKey []byte) (*types.Transaction, error) {
-	return _KeyRegistry.Contract.RegisterParent(&_KeyRegistry.TransactOpts, publicKey, parentKey)
-}
-
-// RegisterParent is a paid mutator transaction binding the contract method 0xb10d937b.
-//
-// Solidity: function registerParent(bytes publicKey, bytes parentKey) returns()
-func (_KeyRegistry *KeyRegistryTransactorSession) RegisterParent(publicKey []byte, parentKey []byte) (*types.Transaction, error) {
-	return _KeyRegistry.Contract.RegisterParent(&_KeyRegistry.TransactOpts, publicKey, parentKey)
 }
 
 // KeyRegistryKeyDisabledIterator is returned from FilterKeyDisabled and is used to iterate over the raw logs and unpacked data for KeyDisabled events raised by the KeyRegistry contract.
@@ -572,9 +491,9 @@ func (_KeyRegistry *KeyRegistryFilterer) ParseKeyDisabled(log types.Log) (*KeyRe
 	return event, nil
 }
 
-// KeyRegistryKeyParentRegisteredIterator is returned from FilterKeyParentRegistered and is used to iterate over the raw logs and unpacked data for KeyParentRegistered events raised by the KeyRegistry contract.
-type KeyRegistryKeyParentRegisteredIterator struct {
-	Event *KeyRegistryKeyParentRegistered // Event containing the contract specifics and raw log
+// KeyRegistryKeyOwnerChangedIterator is returned from FilterKeyOwnerChanged and is used to iterate over the raw logs and unpacked data for KeyOwnerChanged events raised by the KeyRegistry contract.
+type KeyRegistryKeyOwnerChangedIterator struct {
+	Event *KeyRegistryKeyOwnerChanged // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -588,7 +507,7 @@ type KeyRegistryKeyParentRegisteredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *KeyRegistryKeyParentRegisteredIterator) Next() bool {
+func (it *KeyRegistryKeyOwnerChangedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -597,7 +516,7 @@ func (it *KeyRegistryKeyParentRegisteredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(KeyRegistryKeyParentRegistered)
+			it.Event = new(KeyRegistryKeyOwnerChanged)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -612,7 +531,7 @@ func (it *KeyRegistryKeyParentRegisteredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(KeyRegistryKeyParentRegistered)
+		it.Event = new(KeyRegistryKeyOwnerChanged)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -628,42 +547,42 @@ func (it *KeyRegistryKeyParentRegisteredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *KeyRegistryKeyParentRegisteredIterator) Error() error {
+func (it *KeyRegistryKeyOwnerChangedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *KeyRegistryKeyParentRegisteredIterator) Close() error {
+func (it *KeyRegistryKeyOwnerChangedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// KeyRegistryKeyParentRegistered represents a KeyParentRegistered event raised by the KeyRegistry contract.
-type KeyRegistryKeyParentRegistered struct {
+// KeyRegistryKeyOwnerChanged represents a KeyOwnerChanged event raised by the KeyRegistry contract.
+type KeyRegistryKeyOwnerChanged struct {
 	Arg0 []byte
-	Arg1 []byte
+	Arg1 common.Address
 	Raw  types.Log // Blockchain specific contextual infos
 }
 
-// FilterKeyParentRegistered is a free log retrieval operation binding the contract event 0x3f629b715f22cf1453603aec7468ddc75788aab619ed052ccba9606638b8bb6d.
+// FilterKeyOwnerChanged is a free log retrieval operation binding the contract event 0x4676a911d74639b4a1cbae32a65b0c9ee0ed453681b4246f164bb4381079b03c.
 //
-// Solidity: event KeyParentRegistered(bytes arg0, bytes arg1)
-func (_KeyRegistry *KeyRegistryFilterer) FilterKeyParentRegistered(opts *bind.FilterOpts) (*KeyRegistryKeyParentRegisteredIterator, error) {
+// Solidity: event KeyOwnerChanged(bytes arg0, address arg1)
+func (_KeyRegistry *KeyRegistryFilterer) FilterKeyOwnerChanged(opts *bind.FilterOpts) (*KeyRegistryKeyOwnerChangedIterator, error) {
 
-	logs, sub, err := _KeyRegistry.contract.FilterLogs(opts, "KeyParentRegistered")
+	logs, sub, err := _KeyRegistry.contract.FilterLogs(opts, "KeyOwnerChanged")
 	if err != nil {
 		return nil, err
 	}
-	return &KeyRegistryKeyParentRegisteredIterator{contract: _KeyRegistry.contract, event: "KeyParentRegistered", logs: logs, sub: sub}, nil
+	return &KeyRegistryKeyOwnerChangedIterator{contract: _KeyRegistry.contract, event: "KeyOwnerChanged", logs: logs, sub: sub}, nil
 }
 
-// WatchKeyParentRegistered is a free log subscription operation binding the contract event 0x3f629b715f22cf1453603aec7468ddc75788aab619ed052ccba9606638b8bb6d.
+// WatchKeyOwnerChanged is a free log subscription operation binding the contract event 0x4676a911d74639b4a1cbae32a65b0c9ee0ed453681b4246f164bb4381079b03c.
 //
-// Solidity: event KeyParentRegistered(bytes arg0, bytes arg1)
-func (_KeyRegistry *KeyRegistryFilterer) WatchKeyParentRegistered(opts *bind.WatchOpts, sink chan<- *KeyRegistryKeyParentRegistered) (event.Subscription, error) {
+// Solidity: event KeyOwnerChanged(bytes arg0, address arg1)
+func (_KeyRegistry *KeyRegistryFilterer) WatchKeyOwnerChanged(opts *bind.WatchOpts, sink chan<- *KeyRegistryKeyOwnerChanged) (event.Subscription, error) {
 
-	logs, sub, err := _KeyRegistry.contract.WatchLogs(opts, "KeyParentRegistered")
+	logs, sub, err := _KeyRegistry.contract.WatchLogs(opts, "KeyOwnerChanged")
 	if err != nil {
 		return nil, err
 	}
@@ -673,8 +592,8 @@ func (_KeyRegistry *KeyRegistryFilterer) WatchKeyParentRegistered(opts *bind.Wat
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(KeyRegistryKeyParentRegistered)
-				if err := _KeyRegistry.contract.UnpackLog(event, "KeyParentRegistered", log); err != nil {
+				event := new(KeyRegistryKeyOwnerChanged)
+				if err := _KeyRegistry.contract.UnpackLog(event, "KeyOwnerChanged", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -695,12 +614,12 @@ func (_KeyRegistry *KeyRegistryFilterer) WatchKeyParentRegistered(opts *bind.Wat
 	}), nil
 }
 
-// ParseKeyParentRegistered is a log parse operation binding the contract event 0x3f629b715f22cf1453603aec7468ddc75788aab619ed052ccba9606638b8bb6d.
+// ParseKeyOwnerChanged is a log parse operation binding the contract event 0x4676a911d74639b4a1cbae32a65b0c9ee0ed453681b4246f164bb4381079b03c.
 //
-// Solidity: event KeyParentRegistered(bytes arg0, bytes arg1)
-func (_KeyRegistry *KeyRegistryFilterer) ParseKeyParentRegistered(log types.Log) (*KeyRegistryKeyParentRegistered, error) {
-	event := new(KeyRegistryKeyParentRegistered)
-	if err := _KeyRegistry.contract.UnpackLog(event, "KeyParentRegistered", log); err != nil {
+// Solidity: event KeyOwnerChanged(bytes arg0, address arg1)
+func (_KeyRegistry *KeyRegistryFilterer) ParseKeyOwnerChanged(log types.Log) (*KeyRegistryKeyOwnerChanged, error) {
+	event := new(KeyRegistryKeyOwnerChanged)
+	if err := _KeyRegistry.contract.UnpackLog(event, "KeyOwnerChanged", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
@@ -777,12 +696,13 @@ func (it *KeyRegistryKeyRegisteredIterator) Close() error {
 // KeyRegistryKeyRegistered represents a KeyRegistered event raised by the KeyRegistry contract.
 type KeyRegistryKeyRegistered struct {
 	Arg0 []byte
+	Arg1 common.Address
 	Raw  types.Log // Blockchain specific contextual infos
 }
 
-// FilterKeyRegistered is a free log retrieval operation binding the contract event 0x2123184afbd7510b176b666deb82298c81b9a8b363e3a88f8cf4b726e4c81ae4.
+// FilterKeyRegistered is a free log retrieval operation binding the contract event 0xf77c9b4a9cc46843db8f22d9e84de14b5900316e5706ca63f7fb447ba07c3dc6.
 //
-// Solidity: event KeyRegistered(bytes arg0)
+// Solidity: event KeyRegistered(bytes arg0, address arg1)
 func (_KeyRegistry *KeyRegistryFilterer) FilterKeyRegistered(opts *bind.FilterOpts) (*KeyRegistryKeyRegisteredIterator, error) {
 
 	logs, sub, err := _KeyRegistry.contract.FilterLogs(opts, "KeyRegistered")
@@ -792,9 +712,9 @@ func (_KeyRegistry *KeyRegistryFilterer) FilterKeyRegistered(opts *bind.FilterOp
 	return &KeyRegistryKeyRegisteredIterator{contract: _KeyRegistry.contract, event: "KeyRegistered", logs: logs, sub: sub}, nil
 }
 
-// WatchKeyRegistered is a free log subscription operation binding the contract event 0x2123184afbd7510b176b666deb82298c81b9a8b363e3a88f8cf4b726e4c81ae4.
+// WatchKeyRegistered is a free log subscription operation binding the contract event 0xf77c9b4a9cc46843db8f22d9e84de14b5900316e5706ca63f7fb447ba07c3dc6.
 //
-// Solidity: event KeyRegistered(bytes arg0)
+// Solidity: event KeyRegistered(bytes arg0, address arg1)
 func (_KeyRegistry *KeyRegistryFilterer) WatchKeyRegistered(opts *bind.WatchOpts, sink chan<- *KeyRegistryKeyRegistered) (event.Subscription, error) {
 
 	logs, sub, err := _KeyRegistry.contract.WatchLogs(opts, "KeyRegistered")
@@ -829,9 +749,9 @@ func (_KeyRegistry *KeyRegistryFilterer) WatchKeyRegistered(opts *bind.WatchOpts
 	}), nil
 }
 
-// ParseKeyRegistered is a log parse operation binding the contract event 0x2123184afbd7510b176b666deb82298c81b9a8b363e3a88f8cf4b726e4c81ae4.
+// ParseKeyRegistered is a log parse operation binding the contract event 0xf77c9b4a9cc46843db8f22d9e84de14b5900316e5706ca63f7fb447ba07c3dc6.
 //
-// Solidity: event KeyRegistered(bytes arg0)
+// Solidity: event KeyRegistered(bytes arg0, address arg1)
 func (_KeyRegistry *KeyRegistryFilterer) ParseKeyRegistered(log types.Log) (*KeyRegistryKeyRegistered, error) {
 	event := new(KeyRegistryKeyRegistered)
 	if err := _KeyRegistry.contract.UnpackLog(event, "KeyRegistered", log); err != nil {

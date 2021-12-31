@@ -22,7 +22,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := instance.Registry(nil, keyToQuery)
+	res, err := instance.Registered(nil, keyToQuery)
 	if err != nil {
 		log.Fatal(err)
 	}

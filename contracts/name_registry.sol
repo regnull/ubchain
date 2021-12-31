@@ -18,16 +18,13 @@ contract NameRegistry {
         require(bytes(name).length <= 64);
 
         // The key must be known.
-        require(keyRegistry.exists(key));
+        require(keyRegistry.registered(key));
 
         if (registry[name].length > 0) {
-            bytes memory ownerKey = key;
-            bytes memory parentKey = keyRegistry.parent(key);
-            if (parentKey.length > 0) {
-                ownerKey = parentKey;
-            }
-            address adr = address(bytes20(keccak256(ownerKey)));
-            require(msg.sender == adr);
+            // We can re-assign the name to the new owner.
+            require(keyRegistry.owner(registry[name]) == msg.sender);
+        } else {
+            require(keyRegistry.owner(key) == msg.sender);
         }
         registry[name] = key;
     }

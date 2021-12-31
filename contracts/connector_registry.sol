@@ -19,11 +19,7 @@ contract ConnectorRegistry {
        // Make sure the name is registered.
        bytes memory key = nameRegistry.getKey(name);
        require(key.length == 33);
-
-       // Make sure that caller has rights to perform this operation.
-       bytes memory ownerKey = keyRegistry.keyOwner(key);
-       address ownerAddr = address(bytes20(keccak256(ownerKey)));
-       require(msg.sender == ownerAddr);
+       require(keyRegistry.owner(key) == msg.sender);
 
        registry[name][protocol] = location;
    }

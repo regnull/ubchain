@@ -2,29 +2,28 @@ package testutil
 
 import (
 	"context"
-	"crypto/ecdsa"
 	"log"
 	"math/big"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind/backends"
 	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/regnull/easyecc"
 )
 
 type SimulatedBlockchain struct {
-	privateKey *ecdsa.PrivateKey
+	privateKey *easyecc.PrivateKey
 	auth       *bind.TransactOpts
 	backend    *backends.SimulatedBackend
 }
 
 func NewSimulatedBlockchain() (*SimulatedBlockchain, error) {
 	// Generate private key.
-	privateKey, err := crypto.GenerateKey()
+	privateKey, err := easyecc.NewRandomPrivateKey()
 	if err != nil {
 		return nil, err
 	}
-	auth := bind.NewKeyedTransactor(privateKey)
+	auth := bind.NewKeyedTransactor(privateKey.ToECDSA())
 
 	// Create a simulated blockchain.
 	alloc := make(core.GenesisAlloc)
@@ -46,7 +45,7 @@ func NewSimulatedBlockchain() (*SimulatedBlockchain, error) {
 	}, nil
 }
 
-func (sbc *SimulatedBlockchain) PrivateKey() *ecdsa.PrivateKey {
+func (sbc *SimulatedBlockchain) PrivateKey() *easyecc.PrivateKey {
 	return sbc.privateKey
 }
 

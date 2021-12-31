@@ -32,7 +32,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	res, err := instance.Registry(nil, common.Hex2Bytes(publicKey))
+	res, err := instance.Registered(nil, common.Hex2Bytes(publicKey))
 	if err != nil {
 		log.Fatal(err)
 	}
