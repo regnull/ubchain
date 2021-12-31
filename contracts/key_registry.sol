@@ -22,6 +22,28 @@ contract KeyRegistry {
         emit KeyRegistered(publicKey);
     }
 
+    function exists(bytes calldata publicKey) view public returns(bool) {
+        return registry[publicKey].initialized;
+    }
+
+    function disabled(bytes calldata publicKey) view public returns(bool) {
+        return registry[publicKey].disabled;
+    }
+
+    function parent(bytes calldata publicKey) view public returns(bytes memory) {
+        return registry[publicKey].parent;
+    }
+
+    function keyOwner(bytes calldata publicKey) view public returns(bytes memory) {
+        if (!registry[publicKey].initialized) {
+            return "";
+        }
+        if (registry[publicKey].parent.length > 0) {
+            return registry[publicKey].parent;
+        }
+        return publicKey;
+    }
+
     function registerParent(bytes calldata publicKey, bytes calldata parentKey) public {
         require(publicKey.length == 33);
         require(parentKey.length == 33);
