@@ -12,7 +12,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/keystore"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/regnull/ubchain/keyregistry"
+	"github.com/regnull/ubchain/gocontract"
 )
 
 func main() {
@@ -86,7 +86,7 @@ func main() {
 	auth.GasLimit = gasLimit
 	auth.GasPrice = gasPrice
 
-	txAddr, tx, _, err := keyregistry.DeployKeyregistry(auth, client)
+	txAddr, tx, _, err := gocontract.DeployKeyRegistry(auth, client)
 	if err != nil {
 		log.Fatal(err)
 	}

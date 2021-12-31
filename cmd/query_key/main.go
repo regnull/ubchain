@@ -7,7 +7,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/regnull/ubchain/keyregistry"
+	"github.com/regnull/ubchain/gocontract"
 )
 
 func main() {
@@ -27,7 +27,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	instance, err := keyregistry.NewKeyregistry(common.HexToAddress(contractAddress), client)
+	instance, err := gocontract.NewKeyRegistry(common.HexToAddress(contractAddress), client)
 	if err != nil {
 		log.Fatal(err)
 	}

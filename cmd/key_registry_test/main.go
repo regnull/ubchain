@@ -11,7 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/regnull/easyecc"
-	"github.com/regnull/ubchain/keyregistry"
+	"github.com/regnull/ubchain/gocontract"
 )
 
 func main() {
@@ -34,7 +34,7 @@ func main() {
 		log.Fatal(err)
 	}
 	auth.GasPrice = gasPrice
-	address, tx, instance, err := keyregistry.DeployKeyregistry(auth, blockchain)
+	address, tx, instance, err := gocontract.DeployKeyRegistry(auth, blockchain)
 	blockchain.Commit()
 	if err != nil {
 		log.Fatal(err)

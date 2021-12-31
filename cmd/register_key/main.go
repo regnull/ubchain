@@ -13,7 +13,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/regnull/easyecc"
-	"github.com/regnull/ubchain/keyregistry"
+	"github.com/regnull/ubchain/gocontract"
 )
 
 func main() {
@@ -82,7 +82,7 @@ func main() {
 	auth.GasLimit = gasLimit
 	auth.GasPrice = gasPrice
 
-	instance, err := keyregistry.NewKeyregistry(common.HexToAddress(contractAddress), client)
+	instance, err := gocontract.NewKeyRegistry(common.HexToAddress(contractAddress), client)
 	if err != nil {
 		log.Fatal(err)
 	}

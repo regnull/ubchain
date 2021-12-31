@@ -8,7 +8,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/regnull/ubchain/keyregistry"
+	"github.com/regnull/ubchain/gocontract"
 )
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 		log.Fatal(err)
 	}
 	auth.GasPrice = gasPrice
-	address, tx, instance, err := keyregistry.DeployKeyregistry(auth, client)
+	address, tx, instance, err := gocontract.DeployKeyRegistry(auth, client)
 	if err != nil {
 		log.Fatal(err)
 	}
