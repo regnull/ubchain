@@ -40,3 +40,41 @@ func Test_RegisterName(t *testing.T) {
 	assert.NoError(err)
 	assert.Empty(key)
 }
+
+func Test_RegisterNameAgain(t *testing.T) {
+	assert := assert.New(t)
+
+	bc, err := testutil.NewSimulatedBlockchain()
+	assert.NoError(err)
+
+	ctx := context.Background()
+	keyRegistry, keyRegistryAddr, err := deployKeyRegistry(ctx, bc)
+	assert.NoError(err)
+
+	nameRegistry, _, err := deployNameRegistry(ctx, bc, keyRegistryAddr)
+	assert.NoError(err)
+	bc.Backend().Commit()
+
+	publicKey := bc.PrivateKey().PublicKey().SerializeCompressed()
+	_, err = keyRegistry.Register(bc.Auth(), publicKey)
+	assert.NoError(err)
+	bc.Backend().Commit()
+
+	publicKey1 := bc.PrivateKey1().PublicKey().SerializeCompressed()
+	_, err = keyRegistry.Register(bc.Auth(), publicKey1)
+	assert.NoError(err)
+	bc.Backend().Commit()
+
+	_, err = nameRegistry.Register(bc.Auth(), "spongebob", publicKey)
+	assert.NoError(err)
+	bc.Backend().Commit()
+
+	_, err = nameRegistry.Register(bc.Auth(), "spongebob", publicKey1)
+	assert.NoError(err)
+	bc.Backend().Commit()
+
+	key, err := nameRegistry.GetKey(nil, "spongebob")
+	assert.NoError(err)
+
+	assert.Equal(key, publicKey1)
+}
