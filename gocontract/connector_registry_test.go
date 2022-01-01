@@ -49,4 +49,8 @@ func Test_RegisterConnector(t *testing.T) {
 	location, err := connRegistry.GetLocation(nil, "spongebob", "PL_DMS")
 	assert.NoError(err)
 	assert.Equal("http://somelocation.blah", location)
+
+	// Attempt to register with wrong auth.
+	_, err = connRegistry.Register(bc.Auth1(), "spongebob", "PL_XYZ", "http://somelocation.blah")
+	assert.Error(err)
 }
