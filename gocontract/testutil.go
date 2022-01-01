@@ -36,3 +36,20 @@ func deployNameRegistry(ctx context.Context, bc *testutil.SimulatedBlockchain,
 	bc.Backend().Commit()
 	return instance, addr, nil
 }
+
+func deployConnectorRegistry(ctx context.Context, bc *testutil.SimulatedBlockchain,
+	keyRegistryAddr common.Address, nameRegistryAddr common.Address) (*ConnectorRegistry, common.Address, error) {
+
+	gasPrice, err := bc.Backend().SuggestGasPrice(ctx)
+	if err != nil {
+		return nil, common.Address{}, err
+	}
+	bc.Auth().GasPrice = gasPrice
+	addr, _, instance, err := DeployConnectorRegistry(bc.Auth(), bc.Backend(),
+		keyRegistryAddr, nameRegistryAddr)
+	if err != nil {
+		return nil, common.Address{}, err
+	}
+	bc.Backend().Commit()
+	return instance, addr, nil
+}

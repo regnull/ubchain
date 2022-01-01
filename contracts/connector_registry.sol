@@ -8,7 +8,7 @@ contract ConnectorRegistry {
     KeyRegistry keyRegistry;
     NameRegistry nameRegistry;
 
-    mapping(string => mapping(string => string)) public registry;
+    mapping(string => mapping(string => string)) registry;
 
     event ConnectorRegistered(string, string, string);
 
@@ -25,5 +25,9 @@ contract ConnectorRegistry {
 
        registry[name][protocol] = location;
        emit ConnectorRegistered(name, protocol, location);
+   }
+
+   function getLocation(string calldata name, string calldata protocol) view public returns(string memory) {
+       return registry[name][protocol];
    }
 }

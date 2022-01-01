@@ -100,3 +100,7 @@ func (sbc *SimulatedBlockchain) Auth2() *bind.TransactOpts {
 func (sbc *SimulatedBlockchain) Backend() *backends.SimulatedBackend {
 	return sbc.backend
 }
+
+func (sbc *SimulatedBlockchain) Commit() {
+	sbc.backend.Commit()
+}
