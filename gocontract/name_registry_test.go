@@ -61,14 +61,16 @@ func Test_RegisterNameAgain(t *testing.T) {
 	bc.Backend().Commit()
 
 	publicKey1 := bc.PrivateKey1().PublicKey().SerializeCompressed()
-	_, err = keyRegistry.Register(bc.Auth(), publicKey1)
+	_, err = keyRegistry.Register(bc.Auth1(), publicKey1)
 	assert.NoError(err)
 	bc.Backend().Commit()
 
+	// First regisration.
 	_, err = nameRegistry.Register(bc.Auth(), "spongebob", publicKey)
 	assert.NoError(err)
 	bc.Backend().Commit()
 
+	// Second registration.
 	_, err = nameRegistry.Register(bc.Auth(), "spongebob", publicKey1)
 	assert.NoError(err)
 	bc.Backend().Commit()
@@ -77,4 +79,18 @@ func Test_RegisterNameAgain(t *testing.T) {
 	assert.NoError(err)
 
 	assert.Equal(key, publicKey1)
+
+	// Now if we try to register the name again, we should get an error
+	// (since we don't own the key anymore.)
+	publicKey2 := bc.PrivateKey2().PublicKey().SerializeCompressed()
+	_, err = keyRegistry.Register(bc.Auth2(), publicKey2)
+	assert.NoError(err)
+	bc.Backend().Commit()
+
+	_, err = nameRegistry.Register(bc.Auth(), "spongebob", publicKey2)
+	assert.Error(err)
+
+	// But the new owner should be able to change the registration.
+	_, err = nameRegistry.Register(bc.Auth1(), "spongebob", publicKey2)
+	assert.NoError(err)
 }

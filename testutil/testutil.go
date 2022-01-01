@@ -17,6 +17,8 @@ type SimulatedBlockchain struct {
 	privateKey1 *easyecc.PrivateKey
 	privateKey2 *easyecc.PrivateKey
 	auth        *bind.TransactOpts
+	auth1       *bind.TransactOpts
+	auth2       *bind.TransactOpts
 	backend     *backends.SimulatedBackend
 }
 
@@ -38,6 +40,8 @@ func NewSimulatedBlockchain() (*SimulatedBlockchain, error) {
 	}
 
 	auth := bind.NewKeyedTransactor(privateKey.ToECDSA())
+	auth1 := bind.NewKeyedTransactor(privateKey1.ToECDSA())
+	auth2 := bind.NewKeyedTransactor(privateKey2.ToECDSA())
 
 	// Create a simulated blockchain.
 	alloc := make(core.GenesisAlloc)
@@ -55,12 +59,16 @@ func NewSimulatedBlockchain() (*SimulatedBlockchain, error) {
 		log.Fatal(err)
 	}
 	auth.GasPrice = gasPrice
+	auth1.GasPrice = gasPrice
+	auth2.GasPrice = gasPrice
 
 	return &SimulatedBlockchain{
 		privateKey:  privateKey,
 		privateKey1: privateKey1,
 		privateKey2: privateKey2,
 		auth:        auth,
+		auth1:       auth1,
+		auth2:       auth2,
 		backend:     blockchain,
 	}, nil
 }
@@ -79,6 +87,14 @@ func (sbc *SimulatedBlockchain) PrivateKey2() *easyecc.PrivateKey {
 
 func (sbc *SimulatedBlockchain) Auth() *bind.TransactOpts {
 	return sbc.auth
+}
+
+func (sbc *SimulatedBlockchain) Auth1() *bind.TransactOpts {
+	return sbc.auth1
+}
+
+func (sbc *SimulatedBlockchain) Auth2() *bind.TransactOpts {
+	return sbc.auth2
 }
 
 func (sbc *SimulatedBlockchain) Backend() *backends.SimulatedBackend {
