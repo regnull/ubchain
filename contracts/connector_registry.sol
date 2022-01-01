@@ -10,6 +10,8 @@ contract ConnectorRegistry {
 
     mapping(string => mapping(string => string)) public registry;
 
+    event ConnectorRegistered(string, string, string);
+
     constructor(address keyRegistryAddress, address nameRegistryAddress) {
         keyRegistry = KeyRegistry(keyRegistryAddress);
         nameRegistry = NameRegistry(nameRegistryAddress);
@@ -22,5 +24,6 @@ contract ConnectorRegistry {
        require(keyRegistry.owner(key) == msg.sender);
 
        registry[name][protocol] = location;
+       emit ConnectorRegistered(name, protocol, location);
    }
 }

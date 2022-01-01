@@ -8,6 +8,8 @@ contract NameRegistry {
 
     mapping(string => bytes) public registry;
 
+    event NameRegistered(string, bytes);
+
     constructor(address keyRegistryAddress) {
         keyRegistry = KeyRegistry(keyRegistryAddress);
     }
@@ -27,6 +29,7 @@ contract NameRegistry {
             require(keyRegistry.owner(key) == msg.sender);
         }
         registry[name] = key;
+        emit NameRegistered(name, key);
     }
 
     function getKey(string calldata name) view public returns(bytes memory) {
