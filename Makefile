@@ -9,4 +9,3 @@ gencode:
 	abigen --bin=build/KeyRegistry.bin --abi=build/KeyRegistry.abi --type=KeyRegistry --pkg=gocontract --out=gocontract/key_registry.go
 	abigen --bin=build/NameRegistry.bin --abi=build/NameRegistry.abi --type=NameRegistry --pkg=gocontract --out=gocontract/name_registry.go
 	abigen --bin=build/ConnectorRegistry.bin --abi=build/ConnectorRegistry.abi --type=ConnectorRegistry --pkg=gocontract --out=gocontract/connector_registry.go	
-	abigen --bin=build/Store.bin --abi=build/Store.abi --type=Store --pkg=gocontract --out=gocontract/store.go	
