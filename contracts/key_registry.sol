@@ -7,7 +7,7 @@ contract KeyRegistry {
         address owner;
     }
 
-    mapping(bytes => KeyEntry) public registry;
+    mapping(bytes => KeyEntry) registry;
 
     event KeyRegistered(bytes, address);
     event KeyOwnerChanged(bytes, address);
