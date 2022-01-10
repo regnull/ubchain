@@ -6,7 +6,7 @@ import "./key_registry.sol";
 contract NameRegistry {
     KeyRegistry keyRegistry;
 
-    mapping(string => bytes) public registry;
+    mapping(string => bytes) registry;
 
     event NameRegistered(string, bytes);
 
