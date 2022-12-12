@@ -10,11 +10,20 @@ contract NameRegistry {
     mapping(string => RegistryEntry) keyRegistry;
     mapping(string => mapping(string => string)) connectorRegistry;
 
-    event NameRegistered(string, address);
-    event PriceChanged(string, uint256);
-    event Sale(string, uint256);
-    event ConnectorRegistered(string, string, string);
+    // A new name was just registered.
+    event NameRegistered(string name, address owner);
 
+    // Name's price was changed - maybe it was listed for sale, or was delisted.
+    // Price of zero means the name is not for sale.
+    event PriceChanged(string name, uint256 price);
+
+    // A name was sold.
+    event Sale(string name, uint256 price, address newOwner);
+
+    // A connector was registered.
+    event ConnectorRegistered(string name, string protocol, string location);
+
+    // Register a name to an owner. The name must not be already registered.
     function registerName(bytes calldata publicKey, string calldata name)
         public
     {
@@ -28,6 +37,7 @@ contract NameRegistry {
         emit NameRegistered(name, msg.sender);
     }
 
+    // Lookup information associated with a name.
     function lookupName(string calldata name)
         public
         view
@@ -41,22 +51,26 @@ contract NameRegistry {
         return (e.owner, e.publicKey, e.price);
     }
 
+    // Change name's price. If a price is non-zero, anyone can pay and assume ownership of a name.
+    // A price of zero means the name is not for sale.
     function changePrice(string calldata name, uint256 price) public {
         require(keyRegistry[name].owner == msg.sender); // Must be the owner.
         keyRegistry[name].price = price;
         emit PriceChanged(name, price);
     }
 
+    // Buy a name. The name must be listed for sale (price is greater than zero).
     function buy(string calldata name, bytes memory publicKey) public {
         require(keyRegistry[name].price > 0); // The name must be for sale.
         uint256 price = keyRegistry[name].price;
         payable(keyRegistry[name].owner).transfer(price);
-        keyRegistry[name].owner = address(0);
+        keyRegistry[name].owner = msg.sender;
         keyRegistry[name].publicKey = publicKey;
         keyRegistry[name].price = 0;
-        emit Sale(name, price);
+        emit Sale(name, price, msg.sender);
     }
 
+    // Register a connector. Connectors control how to contact the owner of the name using various protocols.
     function registerConnector(
         string calldata name,
         string calldata protocol,
@@ -67,6 +81,7 @@ contract NameRegistry {
         emit ConnectorRegistered(name, protocol, location);
     }
 
+    // Lookup connector's info.
     function lookupConnector(string calldata name, string calldata protocol)
         public
         view
