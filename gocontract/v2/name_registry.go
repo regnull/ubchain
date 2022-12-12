@@ -30,8 +30,8 @@ var (
 
 // NameRegistryMetaData contains all meta data concerning the NameRegistry contract.
 var NameRegistryMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"ConnectorRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"NameRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"PriceChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"Sale\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"buy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"changePrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"protocol\",\"type\":\"string\"}],\"name\":\"lookupConnector\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"lookupName\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"protocol\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"}],\"name\":\"registerConnector\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"registerName\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
-	Bin: "0x608060405234801561001057600080fd5b50610d4d806100206000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c80631fa195961461006757806356c792db1461007c5780635d2097d21461008f578063639cdb95146100a2578063d346e3bd146100cd578063f11a1a9a146100ed575b600080fd5b61007a610075366004610722565b610100565b005b61007a61008a36600461076e565b6101aa565b61007a61009d3660046107f0565b6102cf565b6100b56100b03660046108cb565b61044e565b6040516100c493929190610953565b60405180910390f35b6100e06100db36600461076e565b61052d565b6040516100c49190610987565b61007a6100fb3660046109a1565b610600565b336001600160a01b03166000848460405161011c929190610a3b565b908152604051908190036020019020600101546001600160a01b03161461014257600080fd5b8060008484604051610155929190610a3b565b9081526020016040518091039020600201819055507f29ecd1e0988af1492e43256007437db411881757b3e6e808c9f04847b264178c83838360405161019d93929190610a74565b60405180910390a1505050565b602183146101b757600080fd5b60006001600160a01b0316600083836040516101d4929190610a3b565b908152604051908190036020019020600101546001600160a01b0316146101fa57600080fd5b600181101561020857600080fd5b604081111561021657600080fd5b3360008383604051610229929190610a3b565b908152602001604051809103902060010160006101000a8154816001600160a01b0302191690836001600160a01b03160217905550838360008484604051610272929190610a3b565b9081526040519081900360200190209161028d919083610b21565b507f1c6eac0e720ec22bb0653aec9c19985633a4fb07971cf973096c2f8e3c37c17f8282336040516102c193929190610be2565b60405180910390a150505050565b60008084846040516102e2929190610a3b565b908152602001604051809103902060020154116102fe57600080fd5b6000808484604051610311929190610a3b565b908152602001604051809103902060020154905060008484604051610337929190610a3b565b908152604051908190036020018120600101546001600160a01b03169082156108fc029083906000818181858888f1935050505015801561037c573d6000803e3d6000fd5b506000808585604051610390929190610a3b565b908152602001604051809103902060010160006101000a8154816001600160a01b0302191690836001600160a01b0316021790555081600085856040516103d8929190610a3b565b908152604051908190036020019020906103f29082610c0e565b506000808585604051610406929190610a3b565b9081526020016040518091039020600201819055507fe566f425cda2f2e32a2544f536cd73408fda962cbc270918f2ad89a0a304aba18484836040516102c193929190610a74565b6000606060008060008686604051610467929190610a3b565b9081526040519081900360200190206001810154600282015482549293506001600160a01b0390911691839190829061049f90610a98565b80601f01602080910402602001604051908101604052809291908181526020018280546104cb90610a98565b80156105185780601f106104ed57610100808354040283529160200191610518565b820191906000526020600020905b8154815290600101906020018083116104fb57829003601f168201915b50505050509150935093509350509250925092565b606060018585604051610541929190610a3b565b9081526020016040518091039020838360405161055f929190610a3b565b9081526020016040518091039020805461057890610a98565b80601f01602080910402602001604051908101604052809291908181526020018280546105a490610a98565b80156105f15780601f106105c6576101008083540402835291602001916105f1565b820191906000526020600020905b8154815290600101906020018083116105d457829003601f168201915b50505050509050949350505050565b336001600160a01b03166000878760405161061c929190610a3b565b908152604051908190036020019020600101546001600160a01b03161461064257600080fd5b818160018888604051610656929190610a3b565b90815260200160405180910390208686604051610674929190610a3b565b9081526020016040518091039020918261068f929190610b21565b507f6bcbdc9c6b89c8a6b289cc4308c6f6841a0e25d81c5fe34b1dedb2848c5f5ca38686868686866040516106c996959493929190610cce565b60405180910390a1505050505050565b60008083601f8401126106eb57600080fd5b50813567ffffffffffffffff81111561070357600080fd5b60208301915083602082850101111561071b57600080fd5b9250929050565b60008060006040848603121561073757600080fd5b833567ffffffffffffffff81111561074e57600080fd5b61075a868287016106d9565b909790965060209590950135949350505050565b6000806000806040858703121561078457600080fd5b843567ffffffffffffffff8082111561079c57600080fd5b6107a8888389016106d9565b909650945060208701359150808211156107c157600080fd5b506107ce878288016106d9565b95989497509550505050565b634e487b7160e01b600052604160045260246000fd5b60008060006040848603121561080557600080fd5b833567ffffffffffffffff8082111561081d57600080fd5b610829878388016106d9565b9095509350602086013591508082111561084257600080fd5b818601915086601f83011261085657600080fd5b813581811115610868576108686107da565b604051601f8201601f19908116603f01168101908382118183101715610890576108906107da565b816040528281528960208487010111156108a957600080fd5b8260208601602083013760006020848301015280955050505050509250925092565b600080602083850312156108de57600080fd5b823567ffffffffffffffff8111156108f557600080fd5b610901858286016106d9565b90969095509350505050565b6000815180845260005b8181101561093357602081850181015186830182015201610917565b506000602082860101526020601f19601f83011685010191505092915050565b6001600160a01b03841681526060602082018190526000906109779083018561090d565b9050826040830152949350505050565b60208152600061099a602083018461090d565b9392505050565b600080600080600080606087890312156109ba57600080fd5b863567ffffffffffffffff808211156109d257600080fd5b6109de8a838b016106d9565b909850965060208901359150808211156109f757600080fd5b610a038a838b016106d9565b90965094506040890135915080821115610a1c57600080fd5b50610a2989828a016106d9565b979a9699509497509295939492505050565b8183823760009101908152919050565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b604081526000610a88604083018587610a4b565b9050826020830152949350505050565b600181811c90821680610aac57607f821691505b602082108103610acc57634e487b7160e01b600052602260045260246000fd5b50919050565b601f821115610b1c57600081815260208120601f850160051c81016020861015610af95750805b601f850160051c820191505b81811015610b1857828155600101610b05565b5050505b505050565b67ffffffffffffffff831115610b3957610b396107da565b610b4d83610b478354610a98565b83610ad2565b6000601f841160018114610b815760008515610b695750838201355b600019600387901b1c1916600186901b178355610bdb565b600083815260209020601f19861690835b82811015610bb25786850135825560209485019460019092019101610b92565b5086821015610bcf5760001960f88860031b161c19848701351681555b505060018560011b0183555b5050505050565b604081526000610bf6604083018587610a4b565b905060018060a01b0383166020830152949350505050565b815167ffffffffffffffff811115610c2857610c286107da565b610c3c81610c368454610a98565b84610ad2565b602080601f831160018114610c715760008415610c595750858301515b600019600386901b1c1916600185901b178555610b18565b600085815260208120601f198616915b82811015610ca057888601518255948401946001909101908401610c81565b5085821015610cbe5787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b606081526000610ce260608301888a610a4b565b8281036020840152610cf5818789610a4b565b90508281036040840152610d0a818587610a4b565b999850505050505050505056fea264697066735822122022fd0512113c87884207e54f9c46115edb33eb1c04cbc479047976b58227132964736f6c63430008110033",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"protocol\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"}],\"name\":\"ConnectorRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"NameRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"PriceChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"Sale\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"}],\"name\":\"buy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"changePrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"protocol\",\"type\":\"string\"}],\"name\":\"lookupConnector\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"lookupName\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"protocol\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"location\",\"type\":\"string\"}],\"name\":\"registerConnector\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"publicKey\",\"type\":\"bytes\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"name\":\"registerName\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	Bin: "0x608060405234801561001057600080fd5b50610d84806100206000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c80631fa195961461006757806356c792db1461007c5780635d2097d21461008f578063639cdb95146100a2578063d346e3bd146100cd578063f11a1a9a146100ed575b600080fd5b61007a610075366004610724565b610100565b005b61007a61008a366004610770565b6101aa565b61007a61009d3660046107f2565b6102cf565b6100b56100b03660046108cd565b610450565b6040516100c493929190610955565b60405180910390f35b6100e06100db366004610770565b61052f565b6040516100c49190610989565b61007a6100fb3660046109a3565b610602565b336001600160a01b03166000848460405161011c929190610a3d565b908152604051908190036020019020600101546001600160a01b03161461014257600080fd5b8060008484604051610155929190610a3d565b9081526020016040518091039020600201819055507f29ecd1e0988af1492e43256007437db411881757b3e6e808c9f04847b264178c83838360405161019d93929190610a76565b60405180910390a1505050565b602183146101b757600080fd5b60006001600160a01b0316600083836040516101d4929190610a3d565b908152604051908190036020019020600101546001600160a01b0316146101fa57600080fd5b600181101561020857600080fd5b604081111561021657600080fd5b3360008383604051610229929190610a3d565b908152602001604051809103902060010160006101000a8154816001600160a01b0302191690836001600160a01b03160217905550838360008484604051610272929190610a3d565b9081526040519081900360200190209161028d919083610b23565b507f1c6eac0e720ec22bb0653aec9c19985633a4fb07971cf973096c2f8e3c37c17f8282336040516102c193929190610be4565b60405180910390a150505050565b60008084846040516102e2929190610a3d565b908152602001604051809103902060020154116102fe57600080fd5b6000808484604051610311929190610a3d565b908152602001604051809103902060020154905060008484604051610337929190610a3d565b908152604051908190036020018120600101546001600160a01b03169082156108fc029083906000818181858888f1935050505015801561037c573d6000803e3d6000fd5b503360008585604051610390929190610a3d565b908152602001604051809103902060010160006101000a8154816001600160a01b0302191690836001600160a01b0316021790555081600085856040516103d8929190610a3d565b908152604051908190036020019020906103f29082610c10565b506000808585604051610406929190610a3d565b9081526020016040518091039020600201819055507f74d699b6db148dc632a2dbe2c680980f546b0382af2e71a7d4bf51c3193adb9a848483336040516102c19493929190610cd0565b6000606060008060008686604051610469929190610a3d565b9081526040519081900360200190206001810154600282015482549293506001600160a01b039091169183919082906104a190610a9a565b80601f01602080910402602001604051908101604052809291908181526020018280546104cd90610a9a565b801561051a5780601f106104ef5761010080835404028352916020019161051a565b820191906000526020600020905b8154815290600101906020018083116104fd57829003601f168201915b50505050509150935093509350509250925092565b606060018585604051610543929190610a3d565b90815260200160405180910390208383604051610561929190610a3d565b9081526020016040518091039020805461057a90610a9a565b80601f01602080910402602001604051908101604052809291908181526020018280546105a690610a9a565b80156105f35780601f106105c8576101008083540402835291602001916105f3565b820191906000526020600020905b8154815290600101906020018083116105d657829003601f168201915b50505050509050949350505050565b336001600160a01b03166000878760405161061e929190610a3d565b908152604051908190036020019020600101546001600160a01b03161461064457600080fd5b818160018888604051610658929190610a3d565b90815260200160405180910390208686604051610676929190610a3d565b90815260200160405180910390209182610691929190610b23565b507f6bcbdc9c6b89c8a6b289cc4308c6f6841a0e25d81c5fe34b1dedb2848c5f5ca38686868686866040516106cb96959493929190610d05565b60405180910390a1505050505050565b60008083601f8401126106ed57600080fd5b50813567ffffffffffffffff81111561070557600080fd5b60208301915083602082850101111561071d57600080fd5b9250929050565b60008060006040848603121561073957600080fd5b833567ffffffffffffffff81111561075057600080fd5b61075c868287016106db565b909790965060209590950135949350505050565b6000806000806040858703121561078657600080fd5b843567ffffffffffffffff8082111561079e57600080fd5b6107aa888389016106db565b909650945060208701359150808211156107c357600080fd5b506107d0878288016106db565b95989497509550505050565b634e487b7160e01b600052604160045260246000fd5b60008060006040848603121561080757600080fd5b833567ffffffffffffffff8082111561081f57600080fd5b61082b878388016106db565b9095509350602086013591508082111561084457600080fd5b818601915086601f83011261085857600080fd5b81358181111561086a5761086a6107dc565b604051601f8201601f19908116603f01168101908382118183101715610892576108926107dc565b816040528281528960208487010111156108ab57600080fd5b8260208601602083013760006020848301015280955050505050509250925092565b600080602083850312156108e057600080fd5b823567ffffffffffffffff8111156108f757600080fd5b610903858286016106db565b90969095509350505050565b6000815180845260005b8181101561093557602081850181015186830182015201610919565b506000602082860101526020601f19601f83011685010191505092915050565b6001600160a01b03841681526060602082018190526000906109799083018561090f565b9050826040830152949350505050565b60208152600061099c602083018461090f565b9392505050565b600080600080600080606087890312156109bc57600080fd5b863567ffffffffffffffff808211156109d457600080fd5b6109e08a838b016106db565b909850965060208901359150808211156109f957600080fd5b610a058a838b016106db565b90965094506040890135915080821115610a1e57600080fd5b50610a2b89828a016106db565b979a9699509497509295939492505050565b8183823760009101908152919050565b81835281816020850137506000828201602090810191909152601f909101601f19169091010190565b604081526000610a8a604083018587610a4d565b9050826020830152949350505050565b600181811c90821680610aae57607f821691505b602082108103610ace57634e487b7160e01b600052602260045260246000fd5b50919050565b601f821115610b1e57600081815260208120601f850160051c81016020861015610afb5750805b601f850160051c820191505b81811015610b1a57828155600101610b07565b5050505b505050565b67ffffffffffffffff831115610b3b57610b3b6107dc565b610b4f83610b498354610a9a565b83610ad4565b6000601f841160018114610b835760008515610b6b5750838201355b600019600387901b1c1916600186901b178355610bdd565b600083815260209020601f19861690835b82811015610bb45786850135825560209485019460019092019101610b94565b5086821015610bd15760001960f88860031b161c19848701351681555b505060018560011b0183555b5050505050565b604081526000610bf8604083018587610a4d565b905060018060a01b0383166020830152949350505050565b815167ffffffffffffffff811115610c2a57610c2a6107dc565b610c3e81610c388454610a9a565b84610ad4565b602080601f831160018114610c735760008415610c5b5750858301515b600019600386901b1c1916600185901b178555610b1a565b600085815260208120601f198616915b82811015610ca257888601518255948401946001909101908401610c83565b5085821015610cc05787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b606081526000610ce4606083018688610a4d565b6020830194909452506001600160a01b039190911660409091015292915050565b606081526000610d1960608301888a610a4d565b8281036020840152610d2c818789610a4d565b90508281036040840152610d41818587610a4d565b999850505050505050505056fea26469706673582212203439cf435881b7314a9effb684b966587eb8753d32acffa561770b92538385ce64736f6c63430008110033",
 }
 
 // NameRegistryABI is the input ABI used to generate the binding from.
@@ -435,15 +435,15 @@ func (it *NameRegistryConnectorRegisteredIterator) Close() error {
 
 // NameRegistryConnectorRegistered represents a ConnectorRegistered event raised by the NameRegistry contract.
 type NameRegistryConnectorRegistered struct {
-	Arg0 string
-	Arg1 string
-	Arg2 string
-	Raw  types.Log // Blockchain specific contextual infos
+	Name     string
+	Protocol string
+	Location string
+	Raw      types.Log // Blockchain specific contextual infos
 }
 
 // FilterConnectorRegistered is a free log retrieval operation binding the contract event 0x6bcbdc9c6b89c8a6b289cc4308c6f6841a0e25d81c5fe34b1dedb2848c5f5ca3.
 //
-// Solidity: event ConnectorRegistered(string arg0, string arg1, string arg2)
+// Solidity: event ConnectorRegistered(string name, string protocol, string location)
 func (_NameRegistry *NameRegistryFilterer) FilterConnectorRegistered(opts *bind.FilterOpts) (*NameRegistryConnectorRegisteredIterator, error) {
 
 	logs, sub, err := _NameRegistry.contract.FilterLogs(opts, "ConnectorRegistered")
@@ -455,7 +455,7 @@ func (_NameRegistry *NameRegistryFilterer) FilterConnectorRegistered(opts *bind.
 
 // WatchConnectorRegistered is a free log subscription operation binding the contract event 0x6bcbdc9c6b89c8a6b289cc4308c6f6841a0e25d81c5fe34b1dedb2848c5f5ca3.
 //
-// Solidity: event ConnectorRegistered(string arg0, string arg1, string arg2)
+// Solidity: event ConnectorRegistered(string name, string protocol, string location)
 func (_NameRegistry *NameRegistryFilterer) WatchConnectorRegistered(opts *bind.WatchOpts, sink chan<- *NameRegistryConnectorRegistered) (event.Subscription, error) {
 
 	logs, sub, err := _NameRegistry.contract.WatchLogs(opts, "ConnectorRegistered")
@@ -492,7 +492,7 @@ func (_NameRegistry *NameRegistryFilterer) WatchConnectorRegistered(opts *bind.W
 
 // ParseConnectorRegistered is a log parse operation binding the contract event 0x6bcbdc9c6b89c8a6b289cc4308c6f6841a0e25d81c5fe34b1dedb2848c5f5ca3.
 //
-// Solidity: event ConnectorRegistered(string arg0, string arg1, string arg2)
+// Solidity: event ConnectorRegistered(string name, string protocol, string location)
 func (_NameRegistry *NameRegistryFilterer) ParseConnectorRegistered(log types.Log) (*NameRegistryConnectorRegistered, error) {
 	event := new(NameRegistryConnectorRegistered)
 	if err := _NameRegistry.contract.UnpackLog(event, "ConnectorRegistered", log); err != nil {
@@ -571,14 +571,14 @@ func (it *NameRegistryNameRegisteredIterator) Close() error {
 
 // NameRegistryNameRegistered represents a NameRegistered event raised by the NameRegistry contract.
 type NameRegistryNameRegistered struct {
-	Arg0 string
-	Arg1 common.Address
-	Raw  types.Log // Blockchain specific contextual infos
+	Name  string
+	Owner common.Address
+	Raw   types.Log // Blockchain specific contextual infos
 }
 
 // FilterNameRegistered is a free log retrieval operation binding the contract event 0x1c6eac0e720ec22bb0653aec9c19985633a4fb07971cf973096c2f8e3c37c17f.
 //
-// Solidity: event NameRegistered(string arg0, address arg1)
+// Solidity: event NameRegistered(string name, address owner)
 func (_NameRegistry *NameRegistryFilterer) FilterNameRegistered(opts *bind.FilterOpts) (*NameRegistryNameRegisteredIterator, error) {
 
 	logs, sub, err := _NameRegistry.contract.FilterLogs(opts, "NameRegistered")
@@ -590,7 +590,7 @@ func (_NameRegistry *NameRegistryFilterer) FilterNameRegistered(opts *bind.Filte
 
 // WatchNameRegistered is a free log subscription operation binding the contract event 0x1c6eac0e720ec22bb0653aec9c19985633a4fb07971cf973096c2f8e3c37c17f.
 //
-// Solidity: event NameRegistered(string arg0, address arg1)
+// Solidity: event NameRegistered(string name, address owner)
 func (_NameRegistry *NameRegistryFilterer) WatchNameRegistered(opts *bind.WatchOpts, sink chan<- *NameRegistryNameRegistered) (event.Subscription, error) {
 
 	logs, sub, err := _NameRegistry.contract.WatchLogs(opts, "NameRegistered")
@@ -627,7 +627,7 @@ func (_NameRegistry *NameRegistryFilterer) WatchNameRegistered(opts *bind.WatchO
 
 // ParseNameRegistered is a log parse operation binding the contract event 0x1c6eac0e720ec22bb0653aec9c19985633a4fb07971cf973096c2f8e3c37c17f.
 //
-// Solidity: event NameRegistered(string arg0, address arg1)
+// Solidity: event NameRegistered(string name, address owner)
 func (_NameRegistry *NameRegistryFilterer) ParseNameRegistered(log types.Log) (*NameRegistryNameRegistered, error) {
 	event := new(NameRegistryNameRegistered)
 	if err := _NameRegistry.contract.UnpackLog(event, "NameRegistered", log); err != nil {
@@ -706,14 +706,14 @@ func (it *NameRegistryPriceChangedIterator) Close() error {
 
 // NameRegistryPriceChanged represents a PriceChanged event raised by the NameRegistry contract.
 type NameRegistryPriceChanged struct {
-	Arg0 string
-	Arg1 *big.Int
-	Raw  types.Log // Blockchain specific contextual infos
+	Name  string
+	Price *big.Int
+	Raw   types.Log // Blockchain specific contextual infos
 }
 
 // FilterPriceChanged is a free log retrieval operation binding the contract event 0x29ecd1e0988af1492e43256007437db411881757b3e6e808c9f04847b264178c.
 //
-// Solidity: event PriceChanged(string arg0, uint256 arg1)
+// Solidity: event PriceChanged(string name, uint256 price)
 func (_NameRegistry *NameRegistryFilterer) FilterPriceChanged(opts *bind.FilterOpts) (*NameRegistryPriceChangedIterator, error) {
 
 	logs, sub, err := _NameRegistry.contract.FilterLogs(opts, "PriceChanged")
@@ -725,7 +725,7 @@ func (_NameRegistry *NameRegistryFilterer) FilterPriceChanged(opts *bind.FilterO
 
 // WatchPriceChanged is a free log subscription operation binding the contract event 0x29ecd1e0988af1492e43256007437db411881757b3e6e808c9f04847b264178c.
 //
-// Solidity: event PriceChanged(string arg0, uint256 arg1)
+// Solidity: event PriceChanged(string name, uint256 price)
 func (_NameRegistry *NameRegistryFilterer) WatchPriceChanged(opts *bind.WatchOpts, sink chan<- *NameRegistryPriceChanged) (event.Subscription, error) {
 
 	logs, sub, err := _NameRegistry.contract.WatchLogs(opts, "PriceChanged")
@@ -762,7 +762,7 @@ func (_NameRegistry *NameRegistryFilterer) WatchPriceChanged(opts *bind.WatchOpt
 
 // ParsePriceChanged is a log parse operation binding the contract event 0x29ecd1e0988af1492e43256007437db411881757b3e6e808c9f04847b264178c.
 //
-// Solidity: event PriceChanged(string arg0, uint256 arg1)
+// Solidity: event PriceChanged(string name, uint256 price)
 func (_NameRegistry *NameRegistryFilterer) ParsePriceChanged(log types.Log) (*NameRegistryPriceChanged, error) {
 	event := new(NameRegistryPriceChanged)
 	if err := _NameRegistry.contract.UnpackLog(event, "PriceChanged", log); err != nil {
@@ -841,14 +841,15 @@ func (it *NameRegistrySaleIterator) Close() error {
 
 // NameRegistrySale represents a Sale event raised by the NameRegistry contract.
 type NameRegistrySale struct {
-	Arg0 string
-	Arg1 *big.Int
-	Raw  types.Log // Blockchain specific contextual infos
+	Name     string
+	Price    *big.Int
+	NewOwner common.Address
+	Raw      types.Log // Blockchain specific contextual infos
 }
 
-// FilterSale is a free log retrieval operation binding the contract event 0xe566f425cda2f2e32a2544f536cd73408fda962cbc270918f2ad89a0a304aba1.
+// FilterSale is a free log retrieval operation binding the contract event 0x74d699b6db148dc632a2dbe2c680980f546b0382af2e71a7d4bf51c3193adb9a.
 //
-// Solidity: event Sale(string arg0, uint256 arg1)
+// Solidity: event Sale(string name, uint256 price, address newOwner)
 func (_NameRegistry *NameRegistryFilterer) FilterSale(opts *bind.FilterOpts) (*NameRegistrySaleIterator, error) {
 
 	logs, sub, err := _NameRegistry.contract.FilterLogs(opts, "Sale")
@@ -858,9 +859,9 @@ func (_NameRegistry *NameRegistryFilterer) FilterSale(opts *bind.FilterOpts) (*N
 	return &NameRegistrySaleIterator{contract: _NameRegistry.contract, event: "Sale", logs: logs, sub: sub}, nil
 }
 
-// WatchSale is a free log subscription operation binding the contract event 0xe566f425cda2f2e32a2544f536cd73408fda962cbc270918f2ad89a0a304aba1.
+// WatchSale is a free log subscription operation binding the contract event 0x74d699b6db148dc632a2dbe2c680980f546b0382af2e71a7d4bf51c3193adb9a.
 //
-// Solidity: event Sale(string arg0, uint256 arg1)
+// Solidity: event Sale(string name, uint256 price, address newOwner)
 func (_NameRegistry *NameRegistryFilterer) WatchSale(opts *bind.WatchOpts, sink chan<- *NameRegistrySale) (event.Subscription, error) {
 
 	logs, sub, err := _NameRegistry.contract.WatchLogs(opts, "Sale")
@@ -895,9 +896,9 @@ func (_NameRegistry *NameRegistryFilterer) WatchSale(opts *bind.WatchOpts, sink 
 	}), nil
 }
 
-// ParseSale is a log parse operation binding the contract event 0xe566f425cda2f2e32a2544f536cd73408fda962cbc270918f2ad89a0a304aba1.
+// ParseSale is a log parse operation binding the contract event 0x74d699b6db148dc632a2dbe2c680980f546b0382af2e71a7d4bf51c3193adb9a.
 //
-// Solidity: event Sale(string arg0, uint256 arg1)
+// Solidity: event Sale(string name, uint256 price, address newOwner)
 func (_NameRegistry *NameRegistryFilterer) ParseSale(log types.Log) (*NameRegistrySale, error) {
 	event := new(NameRegistrySale)
 	if err := _NameRegistry.contract.UnpackLog(event, "Sale", log); err != nil {
