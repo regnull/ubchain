@@ -37,9 +37,28 @@ contract NameRegistry {
         require(bytes(name).length >= 1);
         require(bytes(name).length <= 64);
 
-        keyRegistry[name].owner = msg.sender;
-        keyRegistry[name].publicKey = publicKey;
-        emit NameRegistered(name, msg.sender);
+        // Verify the name.
+        bytes memory _baseBytes = bytes(name);
+        for (uint256 i = 0; i < _baseBytes.length; i++) {
+            bytes1 b = _baseBytes[i];
+            // We only allow ASCII letters and numbers in the name, plus characters '-' and '_'.
+            if (
+                (b < 0x30 && b != 0x2D) || // Symbols, except '-'.
+                b > 0x7A || // Symbols.
+                (b >= 0x3A && b <= 0x40) || // More symbols.
+                (b >= 0x5B && b <= 0x5E) || // Symbols, except '_'.
+                b == 0x60 // Backtick.
+            ) {
+                revert("invalid name");
+            }
+
+            _baseBytes[i] = _lower(b);
+        }
+        string memory lowercaseName = string(_baseBytes);
+
+        keyRegistry[lowercaseName].owner = msg.sender;
+        keyRegistry[lowercaseName].publicKey = publicKey;
+        emit NameRegistered(lowercaseName, msg.sender);
     }
 
     // Lookup information associated with a name.
@@ -52,7 +71,8 @@ contract NameRegistry {
             uint256 price
         )
     {
-        RegistryEntry storage e = keyRegistry[name];
+        string memory lowercaseName = lower(name);
+        RegistryEntry storage e = keyRegistry[lowercaseName];
         return (e.owner, e.publicKey, e.price);
     }
 
@@ -60,36 +80,40 @@ contract NameRegistry {
     function updatePublicKey(bytes calldata publicKey, string calldata name)
         public
     {
+        string memory lowercaseName = lower(name);
         require(publicKey.length == 33);
-        require(keyRegistry[name].owner == msg.sender); // The name must not be taken.
-        keyRegistry[name].publicKey = publicKey;
-        emit PublicKeyUpdated(name);
+        require(keyRegistry[lowercaseName].owner == msg.sender); // The name must not be taken.
+        keyRegistry[lowercaseName].publicKey = publicKey;
+        emit PublicKeyUpdated(lowercaseName);
     }
 
     // Transfer name ownership to a different owner.
     function transferOwnership(string calldata name, address newOwner) public {
-        require(keyRegistry[name].owner == msg.sender); // Must be the owner.
-        keyRegistry[name].owner = newOwner;
-        emit NameOwnershipChanged(name, newOwner);
+        string memory lowercaseName = lower(name);
+        require(keyRegistry[lowercaseName].owner == msg.sender); // Must be the owner.
+        keyRegistry[lowercaseName].owner = newOwner;
+        emit NameOwnershipChanged(lowercaseName, newOwner);
     }
 
     // Change name's price. If a price is non-zero, anyone can pay and assume ownership of a name.
     // A price of zero means the name is not for sale.
     function changePrice(string calldata name, uint256 price) public {
-        require(keyRegistry[name].owner == msg.sender); // Must be the owner.
-        keyRegistry[name].price = price;
-        emit PriceChanged(name, price);
+        string memory lowercaseName = lower(name);
+        require(keyRegistry[lowercaseName].owner == msg.sender); // Must be the owner.
+        keyRegistry[lowercaseName].price = price;
+        emit PriceChanged(lowercaseName, price);
     }
 
     // Buy a name. The name must be listed for sale (price is greater than zero).
     function buy(string calldata name, bytes memory publicKey) public {
-        require(keyRegistry[name].price > 0); // The name must be for sale.
-        uint256 price = keyRegistry[name].price;
-        payable(keyRegistry[name].owner).transfer(price);
-        keyRegistry[name].owner = msg.sender;
-        keyRegistry[name].publicKey = publicKey;
-        keyRegistry[name].price = 0;
-        emit Sale(name, price, msg.sender);
+        string memory lowercaseName = lower(name);
+        require(keyRegistry[lowercaseName].price > 0); // The name must be for sale.
+        uint256 price = keyRegistry[lowercaseName].price;
+        payable(keyRegistry[lowercaseName].owner).transfer(price);
+        keyRegistry[lowercaseName].owner = msg.sender;
+        keyRegistry[lowercaseName].publicKey = publicKey;
+        keyRegistry[lowercaseName].price = 0;
+        emit Sale(lowercaseName, price, msg.sender);
     }
 
     // Register a connector. Connectors control how to contact the owner of the name using various protocols.
@@ -98,9 +122,10 @@ contract NameRegistry {
         string calldata protocol,
         string calldata location
     ) public {
-        require(keyRegistry[name].owner == msg.sender); // Must be the owner.
-        connectorRegistry[name][protocol] = location;
-        emit ConnectorRegistered(name, protocol, location);
+        string memory lowercaseName = lower(name);
+        require(keyRegistry[lowercaseName].owner == msg.sender); // Must be the owner.
+        connectorRegistry[lowercaseName][protocol] = location;
+        emit ConnectorRegistered(lowercaseName, protocol, location);
     }
 
     // Lookup connector's info.
@@ -109,6 +134,23 @@ contract NameRegistry {
         view
         returns (string memory)
     {
-        return (connectorRegistry[name][protocol]);
+        string memory lowercaseName = lower(name);
+        return (connectorRegistry[lowercaseName][protocol]);
+    }
+
+    function lower(string memory _base) internal pure returns (string memory) {
+        bytes memory _baseBytes = bytes(_base);
+        for (uint256 i = 0; i < _baseBytes.length; i++) {
+            _baseBytes[i] = _lower(_baseBytes[i]);
+        }
+        return string(_baseBytes);
+    }
+
+    function _lower(bytes1 _b1) private pure returns (bytes1) {
+        if (_b1 >= 0x41 && _b1 <= 0x5A) {
+            return bytes1(uint8(_b1) + 32);
+        }
+
+        return _b1;
     }
 }
