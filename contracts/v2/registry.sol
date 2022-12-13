@@ -13,6 +13,8 @@ contract NameRegistry {
     // A new name was just registered.
     event NameRegistered(string name, address owner);
 
+    event NameOwnershipChanged(string name, address newOwner);
+
     // Name's price was changed - maybe it was listed for sale, or was delisted.
     // Price of zero means the name is not for sale.
     event PriceChanged(string name, uint256 price);
@@ -49,6 +51,13 @@ contract NameRegistry {
     {
         RegistryEntry storage e = keyRegistry[name];
         return (e.owner, e.publicKey, e.price);
+    }
+
+    // Transfer name ownership to a different owner.
+    function transferOwnership(string calldata name, address newOwner) public {
+        require(keyRegistry[name].owner == msg.sender); // Must be the owner.
+        keyRegistry[name].owner = newOwner;
+        emit NameOwnershipChanged(name, newOwner);
     }
 
     // Change name's price. If a price is non-zero, anyone can pay and assume ownership of a name.
