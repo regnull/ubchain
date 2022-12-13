@@ -13,6 +13,9 @@ contract NameRegistry {
     // A new name was just registered.
     event NameRegistered(string name, address owner);
 
+    // Public key was updated for this name.
+    event PublicKeyUpdated(string name);
+
     event NameOwnershipChanged(string name, address newOwner);
 
     // Name's price was changed - maybe it was listed for sale, or was delisted.
@@ -51,6 +54,16 @@ contract NameRegistry {
     {
         RegistryEntry storage e = keyRegistry[name];
         return (e.owner, e.publicKey, e.price);
+    }
+
+    // Update public key for already registered name.
+    function updatePublicKey(bytes calldata publicKey, string calldata name)
+        public
+    {
+        require(publicKey.length == 33);
+        require(keyRegistry[name].owner == msg.sender); // The name must not be taken.
+        keyRegistry[name].publicKey = publicKey;
+        emit PublicKeyUpdated(name);
     }
 
     // Transfer name ownership to a different owner.
