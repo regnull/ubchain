@@ -16,11 +16,11 @@ contract NameRegistry {
     // Public key was updated for this name.
     event PublicKeyUpdated(string name);
 
-    event NameOwnershipChanged(string name, address newOwner);
+    event NameOwnershipUpdated(string name, address newOwner);
 
     // Name's price was changed - maybe it was listed for sale, or was delisted.
     // Price of zero means the name is not for sale.
-    event PriceChanged(string name, uint256 price);
+    event PriceUpdated(string name, uint256 price);
 
     // A name was sold.
     event Sale(string name, uint256 price, address newOwner);
@@ -36,11 +36,13 @@ contract NameRegistry {
         require(keyRegistry[name].owner == address(0)); // The name must not be taken.
         require(bytes(name).length >= 1);
         require(bytes(name).length <= 64);
+        require(bytes(name)[0] != '-'); // Name cannot start with a dash.
 
         // Verify the name.
-        bytes memory _baseBytes = bytes(name);
-        for (uint256 i = 0; i < _baseBytes.length; i++) {
-            bytes1 b = _baseBytes[i];
+        bytes memory baseBytes = bytes(name);
+        bool onlySymbols = true;
+        for (uint256 i = 0; i < baseBytes.length; i++) {
+            bytes1 b = baseBytes[i];
             // We only allow ASCII letters and numbers in the name, plus characters '-' and '_'.
             if (
                 (b < 0x30 && b != 0x2D) || // Symbols, except '-'.
@@ -52,9 +54,14 @@ contract NameRegistry {
                 revert("invalid name");
             }
 
-            _baseBytes[i] = _lower(b);
+            if (b != '-' && b != '_') {
+                onlySymbols = false;
+            }
+
+            baseBytes[i] = _lower(b);
         }
-        string memory lowercaseName = string(_baseBytes);
+        require(!onlySymbols);
+        string memory lowercaseName = string(baseBytes);
 
         keyRegistry[lowercaseName].owner = msg.sender;
         keyRegistry[lowercaseName].publicKey = publicKey;
@@ -88,20 +95,20 @@ contract NameRegistry {
     }
 
     // Transfer name ownership to a different owner.
-    function transferOwnership(string calldata name, address newOwner) public {
+    function updateOwnership(string calldata name, address newOwner) public {
         string memory lowercaseName = lower(name);
         require(keyRegistry[lowercaseName].owner == msg.sender); // Must be the owner.
         keyRegistry[lowercaseName].owner = newOwner;
-        emit NameOwnershipChanged(lowercaseName, newOwner);
+        emit NameOwnershipUpdated(lowercaseName, newOwner);
     }
 
     // Change name's price. If a price is non-zero, anyone can pay and assume ownership of a name.
     // A price of zero means the name is not for sale.
-    function changePrice(string calldata name, uint256 price) public {
+    function updatePrice(string calldata name, uint256 price) public {
         string memory lowercaseName = lower(name);
         require(keyRegistry[lowercaseName].owner == msg.sender); // Must be the owner.
         keyRegistry[lowercaseName].price = price;
-        emit PriceChanged(lowercaseName, price);
+        emit PriceUpdated(lowercaseName, price);
     }
 
     // Buy a name. The name must be listed for sale (price is greater than zero).
@@ -146,11 +153,11 @@ contract NameRegistry {
         return string(_baseBytes);
     }
 
-    function _lower(bytes1 _b1) private pure returns (bytes1) {
-        if (_b1 >= 0x41 && _b1 <= 0x5A) {
-            return bytes1(uint8(_b1) + 32);
+    function _lower(bytes1 b1) private pure returns (bytes1) {
+        if (b1 >= 0x41 && b1 <= 0x5A) {
+            return bytes1(uint8(b1) + 32);
         }
 
-        return _b1;
+        return b1;
     }
 }
