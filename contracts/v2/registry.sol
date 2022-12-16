@@ -8,7 +8,7 @@ contract NameRegistry {
         uint256 price;
     }
     mapping(string => RegistryEntry) keyRegistry;
-    mapping(string => mapping(string => string)) connectorRegistry;
+    mapping(string => mapping(string => string)) config;
 
     // A new name was just registered.
     event NameRegistered(string name, address owner);
@@ -25,8 +25,8 @@ contract NameRegistry {
     // A name was sold.
     event Sale(string name, uint256 price, address newOwner);
 
-    // A connector was registered.
-    event ConnectorRegistered(string name, string protocol, string location);
+    // Configuration was updated.
+    event ConfigUpdated(string name, string configName, string configValue);
 
     // Register a name to an owner. The name must not be already registered.
     function registerName(bytes calldata publicKey, string calldata name)
@@ -104,7 +104,7 @@ contract NameRegistry {
     }
 
     // Buy a name. The name must be listed for sale (price is greater than zero).
-    function buy(string calldata name, bytes memory publicKey) public payable {
+    function buyName(string calldata name, bytes memory publicKey) public payable {
         require(keyRegistry[name].price > 0); // The name must be for sale.
         require(keyRegistry[name].price <= msg.value);
         uint256 price = keyRegistry[name].price;
@@ -115,23 +115,24 @@ contract NameRegistry {
         emit Sale(name, price, msg.sender);
     }
 
-    // Register a connector. Connectors control how to contact the owner of the name using various protocols.
-    function registerConnector(
+    // Update configuration. The configuration is just a name/value pair, where both name and 
+    // value are strings.
+    function updateConfig(
         string calldata name,
-        string calldata protocol,
-        string calldata location
+        string calldata configName,
+        string calldata configValue
     ) public {
         require(keyRegistry[name].owner == msg.sender); // Must be the owner.
-        connectorRegistry[name][protocol] = location;
-        emit ConnectorRegistered(name, protocol, location);
+        config[name][configName] = configValue;
+        emit ConfigUpdated(name, configName, configValue);
     }
 
-    // Lookup connector's info.
-    function lookupConnector(string calldata name, string calldata protocol)
+    // Lookup configuration.
+    function lookupConfig(string calldata name, string calldata configName)
         public
         view
         returns (string memory)
     {
-        return (connectorRegistry[name][protocol]);
+        return (config[name][configName]);
     }
 }
