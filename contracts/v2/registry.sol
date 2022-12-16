@@ -106,9 +106,9 @@ contract NameRegistry {
     // Buy a name. The name must be listed for sale (price is greater than zero).
     function buy(string calldata name, bytes memory publicKey) public payable {
         require(keyRegistry[name].price > 0); // The name must be for sale.
-        require(keyRegistry[name].price == msg.value);
+        require(keyRegistry[name].price <= msg.value);
         uint256 price = keyRegistry[name].price;
-        payable(keyRegistry[name].owner).transfer(price);
+        payable(keyRegistry[name].owner).transfer(msg.value);
         keyRegistry[name].owner = msg.sender;
         keyRegistry[name].publicKey = publicKey;
         keyRegistry[name].price = 0;
