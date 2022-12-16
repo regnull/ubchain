@@ -32,11 +32,11 @@ contract NameRegistry {
     function registerName(bytes calldata publicKey, string calldata name)
         public
     {
-        require(publicKey.length == 33);
-        require(keyRegistry[name].owner == address(0)); // The name must not be taken.
-        require(bytes(name).length >= 1);
-        require(bytes(name).length <= 64);
-        require(bytes(name)[0] != "-"); // Name cannot start with a dash.
+        require(publicKey.length == 33, "invalid public key");
+        require(keyRegistry[name].owner == address(0), "name is already registered"); // The name must not be taken.
+        require(bytes(name).length >= 1, "name can't be empty");
+        require(bytes(name).length <= 64, "name is too long");
+        require(bytes(name)[0] != "-", "name can't start with a dash"); // Name cannot start with a dash.
 
         // Verify the name.
         bytes memory baseBytes = bytes(name);
@@ -57,7 +57,7 @@ contract NameRegistry {
                 onlySymbols = false;
             }
         }
-        require(!onlySymbols);
+        require(!onlySymbols, "name must contain at least one letter or digit");
 
         keyRegistry[name].owner = msg.sender;
         keyRegistry[name].publicKey = publicKey;
@@ -82,15 +82,15 @@ contract NameRegistry {
     function updatePublicKey(bytes calldata publicKey, string calldata name)
         public
     {
-        require(publicKey.length == 33);
-        require(keyRegistry[name].owner == msg.sender); // The name must not be taken.
+        require(publicKey.length == 33, "invalid public key");
+        require(keyRegistry[name].owner == msg.sender, "not the owner"); // The name must not be taken.
         keyRegistry[name].publicKey = publicKey;
         emit PublicKeyUpdated(name);
     }
 
     // Transfer name ownership to a different owner.
     function updateOwnership(string calldata name, address newOwner) public {
-        require(keyRegistry[name].owner == msg.sender); // Must be the owner.
+        require(keyRegistry[name].owner == msg.sender, "not the owner"); // Must be the owner.
         keyRegistry[name].owner = newOwner;
         emit NameOwnershipUpdated(name, newOwner);
     }
@@ -98,15 +98,15 @@ contract NameRegistry {
     // Change name's price. If a price is non-zero, anyone can pay and assume ownership of a name.
     // A price of zero means the name is not for sale.
     function updatePrice(string calldata name, uint256 price) public {
-        require(keyRegistry[name].owner == msg.sender); // Must be the owner.
+        require(keyRegistry[name].owner == msg.sender, "not the owner"); // Must be the owner.
         keyRegistry[name].price = price;
         emit PriceUpdated(name, price);
     }
 
     // Buy a name. The name must be listed for sale (price is greater than zero).
     function buyName(string calldata name, bytes memory publicKey) public payable {
-        require(keyRegistry[name].price > 0); // The name must be for sale.
-        require(keyRegistry[name].price <= msg.value);
+        require(keyRegistry[name].price > 0, "not for sale"); // The name must be for sale.
+        require(keyRegistry[name].price <= msg.value, "insufficient value");
         uint256 price = keyRegistry[name].price;
         payable(keyRegistry[name].owner).transfer(msg.value);
         keyRegistry[name].owner = msg.sender;
@@ -122,7 +122,7 @@ contract NameRegistry {
         string calldata configName,
         string calldata configValue
     ) public {
-        require(keyRegistry[name].owner == msg.sender); // Must be the owner.
+        require(keyRegistry[name].owner == msg.sender, "not the owner"); // Must be the owner.
         config[name][configName] = configValue;
         emit ConfigUpdated(name, configName, configValue);
     }
